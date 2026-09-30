@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Task_management.Data;
 using Task_management.Repositories.StatusRepositories;
+using Task_management.Repositories.TaskRepositories;
 using Task_management.Repositories.UserRepositories;
 using Task_management.Services.Statuses;
+using Task_management.Services.Tasks;
 using Task_management.Services.Users;
 
 namespace Task_management
@@ -20,6 +22,9 @@ namespace Task_management
 
             builder.Services.AddTransient<IStatusRepository, StatusRepository>();
             builder.Services.AddTransient<IStatusService, StatusService>();
+
+            builder.Services.AddTransient<ITaskRepository, TaskRepository>();
+            builder.Services.AddTransient<ITaskService, TaskService>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

@@ -42,10 +42,10 @@ namespace Task_management.Controllers
             return Ok(updatedUser);
         }
 
-        [HttpDelete("Delete/{userId}")]
-        public async Task<ActionResult<UserModel>> DeleteUserByIdAsync(int userId)
+        [HttpDelete("Delete/{id}")]
+        public async Task<ActionResult<UserModel>> DeleteUserByIdAsync(int id)
         {
-            UserModel deletedUser = await this.userService.RemoveUserByIdAsync(userId);
+            UserModel deletedUser = await this.userService.RemoveUserByIdAsync(id);
             return Ok(deletedUser);
         }
 

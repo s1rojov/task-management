@@ -4,10 +4,10 @@ namespace Task_management.Repositories.StatusRepositories
 {
     public interface IStatusRepository
     {
-        public Task<StatusModel> CreateStatusAsync(StatusModel status);
-        public IQueryable<StatusModel> GetAllStatuses();
-        public Task<StatusModel> GetByIdAsync(int id);
-        public Task<StatusModel> UpdateStatusAsync(StatusModel status);
-        public Task<StatusModel> DeleteStatusAsync(StatusModel status);
+        Task<StatusModel> CreateAsync(StatusModel status);
+        IQueryable<StatusModel> GetAll();
+        Task<StatusModel> GetByIdAsync(int id);
+        Task<StatusModel> UpdateAsync(StatusModel status);
+        Task<StatusModel> DeleteAsync(StatusModel status);
     }
 }

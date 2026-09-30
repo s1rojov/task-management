@@ -14,12 +14,12 @@ namespace Task_management.Services.Statuses
 
         public Task<StatusModel> AddStatusAsync(StatusModel status)
         {
-            return _context.CreateStatusAsync(status);
+            return _context.CreateAsync(status);
         }
 
         public IQueryable<StatusModel> GetAllStatuses()
         {
-            return _context.GetAllStatuses();
+            return _context.GetAll();
         }
 
         public Task<StatusModel> GetStatusById(int statusId)
@@ -29,13 +29,13 @@ namespace Task_management.Services.Statuses
 
         public Task<StatusModel> ModifyStatusAsync(StatusModel status)
         {
-            return _context.UpdateStatusAsync(status);
+            return _context.UpdateAsync(status);
         }
 
         public async Task<StatusModel> RemoveStatusByIdAsync(int statusId)
         {
             StatusModel status = await _context.GetByIdAsync(statusId);
-            return await _context.DeleteStatusAsync(status);
+            return await _context.DeleteAsync(status);
         }
 
 

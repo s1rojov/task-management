@@ -14,7 +14,7 @@ namespace Task_management.Repositories.StatusRepositories
 
 
         //create new status
-        public async Task<StatusModel> CreateStatusAsync(StatusModel status)
+        public async Task<StatusModel> CreateAsync(StatusModel status)
         {
             await _context.Statuses.AddAsync(status);
             await _context.SaveChangesAsync();
@@ -22,7 +22,7 @@ namespace Task_management.Repositories.StatusRepositories
         }
 
         //get all status
-        public IQueryable<StatusModel> GetAllStatuses()
+        public IQueryable<StatusModel> GetAll()
         {
             var statuses = _context.Statuses;
             return statuses;
@@ -35,7 +35,7 @@ namespace Task_management.Repositories.StatusRepositories
         }
 
         //update status
-        public async Task<StatusModel> UpdateStatusAsync(StatusModel status)
+        public async Task<StatusModel> UpdateAsync(StatusModel status)
         {
             _context.Statuses.Update(status);
             await _context.SaveChangesAsync();
@@ -43,7 +43,7 @@ namespace Task_management.Repositories.StatusRepositories
         }
 
         //delete status
-        public async Task<StatusModel> DeleteStatusAsync(StatusModel status)
+        public async Task<StatusModel> DeleteAsync(StatusModel status)
         {
             _context.Statuses.Remove(status);
             await _context.SaveChangesAsync();

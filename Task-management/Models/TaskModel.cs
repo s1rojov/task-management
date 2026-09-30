@@ -1,16 +1,21 @@
-﻿namespace Task_management.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Task_management.Models;
+
+[Table("tasks")]
+public class TaskModel
 {
-    public class TaskModel
-    {
-        public int Id { get; set; }
-        public string Title { get; set; } = string.Empty;
-        public string? Description { get; set; }
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-        public int StatusId { get; set; }
-        public int UserId { get; set; }
-
-        public StatusModel Statuses { get; set; } = null!;
-        public UserModel Users { get; set; } = null!;
-
-    }
+    [Column("id")]
+    public int Id { get; set; }
+    [Column("title")]
+    public string Title { get; set; } = string.Empty;
+    [Column("description")]
+    public string? Description { get; set; }
+    [Column("updated_at")]
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+    [Column("status_id")]
+    public int StatusId { get; set; }
+    public StatusModel Status { get; set; } = null!;
+    [Column("user_id")]
+    public int UserId { get; set; }
+    public UserModel User { get; set; } = null!;
 }
