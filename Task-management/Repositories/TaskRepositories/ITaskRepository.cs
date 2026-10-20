@@ -1,4 +1,4 @@
-﻿using Task_management.Models;
+﻿using Task_management.DTOs.Tasks;
 
 namespace Task_management.Repositories.TaskRepositories
 {
@@ -6,8 +6,8 @@ namespace Task_management.Repositories.TaskRepositories
     {
         Task<TaskModel> CreateAsync(TaskModel status);
         IQueryable<TaskModel> GetAll();
-        Task<TaskModel?> GetByIdAsync(int id);
-        Task<TaskModel> UpdateAsync(TaskModel status);
-        Task<TaskModel> DeleteAsync(TaskModel status);
+        Task<TaskModel> GetByIdAsync(int id);
+        Task<TaskListDto> UpdateAsync(TaskListDto task);
+        Task<TaskModel> DeleteAsync(int id);
     }
 }

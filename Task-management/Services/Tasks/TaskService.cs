@@ -16,9 +16,9 @@ namespace Task_management.Services.Tasks
             return _taskRepository.CreateAsync(task);
         }
 
-        public Task<TaskModel> DeleteAsync(TaskModel task)
+        public Task<TaskModel> DeleteAsync(int id)
         {
-            return _taskRepository.DeleteAsync(task);
+            return _taskRepository.DeleteAsync(id);
         }
 
         public async Task<List<TaskListDto>> GetAllAsync()
@@ -34,29 +34,37 @@ namespace Task_management.Services.Tasks
                     StatusName = t.Status.Title,
                     UserId = t.User.Id,
                     UserName = t.User.FirstName + " " + t.User.LastName
-                    //Status = new TaskStatusDto
-                    //{
-                    //    Id = t.Status.Id,
-                    //    Name = t.Status.Title
-                    //},
-                    //User = new TaskUserDto
-                    //{
-                    //    Id = t.User.Id,
-                    //    FullName = t.User.FirstName + " " + t.User.LastName
-                    //}
                 })
                 .ToListAsync();
         }
 
 
-        public Task<TaskModel> GetByIdAsync(int id)
+        public async Task<TaskListDto> GetByIdAsync(int id)
         {
-            return _taskRepository.GetByIdAsync(id);
+            var task = await _taskRepository.GetByIdAsync(id);
+
+            if (task == null)
+                throw new Exception("Task not found");
+
+            return new TaskListDto
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+                UpdatedAt = task.UpdatedAt,
+                StatusId = task.Status.Id,
+                StatusName = task.Status.Title,
+                UserId = task.User.Id,
+                UserName = task.User.FirstName + " " + task.User.LastName
+            };
         }
 
-        public Task<TaskModel> UpdateAsync(TaskModel task)
+        public Task<TaskListDto> UpdateAsync(TaskListDto task)
         {
             return _taskRepository.UpdateAsync(task);
         }
+
+
+
     }
 }

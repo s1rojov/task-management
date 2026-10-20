@@ -6,8 +6,8 @@ namespace Task_management.Services.Tasks
     {
         Task<TaskModel> AddAsync(TaskModel task);
         Task<List<TaskListDto>> GetAllAsync();
-        Task<TaskModel> GetByIdAsync(int id);
-        Task<TaskModel> UpdateAsync(TaskModel task);
-        Task<TaskModel> DeleteAsync(TaskModel task);
+        Task<TaskListDto> GetByIdAsync(int id);
+        Task<TaskListDto> UpdateAsync(TaskListDto task);
+        Task<TaskModel> DeleteAsync(int id);
     }
 }
