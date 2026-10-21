@@ -15,11 +15,22 @@ namespace Task_management.Controllers
         }
 
         [HttpPost("Create")]
-        public async Task<ActionResult<TaskModel>> PostAsync([FromBody] TaskModel task)
+        public async Task<ActionResult<TaskListDto>> PostAsync([FromBody] TaskListDto task)
         {
-            TaskModel addedTask = await _taskService.AddAsync(task);
-            return StatusCode(201, addedTask);
+            //{
+            //    TaskModel addedTask = await _taskService.AddAsync(task);
+            //    return StatusCode(201, addedTask);
+            await _taskService.AddAsync(new TaskModel
+            {
+                Title = task.Title,
+                Description = task.Description,
+                StatusId = task.StatusId,
+                UserId = task.UserId
+            }
+               );
+            return StatusCode(201, "Task addded");
         }
+
 
         [HttpGet("GetList")]
         public async Task<ActionResult<List<TaskListDto>>> GetAll()
