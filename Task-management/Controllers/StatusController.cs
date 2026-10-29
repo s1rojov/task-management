@@ -4,6 +4,8 @@ using Task_management.Services.Statuses;
 
 namespace Task_management.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class StatusController : ControllerBase
     {
         private readonly IStatusService statusService;
